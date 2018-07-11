@@ -10,9 +10,11 @@ def convert_to_python(x):
     create_function = re.compile(r'^안해해$')
     use_if = re.compile(r'^안안해$')
 
-    file_value = re.sub(var_assign, '=', file_value)
-    file_value = re.sub(create_function, 'def', file_value)
-    file_value = re.sub(use_if, 'if', file_value)
+    file_value = var_assign.sub(r'=', file_value)
+    file_value = create_function.sub(r'def', file_value)
+    file_value = use_if.sub(r'if', file_value)
+
+    print(file_value)
 
     exec(file_value)
 
